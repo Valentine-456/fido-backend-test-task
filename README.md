@@ -1,6 +1,7 @@
 # fido-backend-test-task
 
-Test task for Back-end at [Fido](https://www.facebook.com/fido.naukma/)
+Test task for Back-end at [Fido](https://www.facebook.com/fido.naukma/).
+
 Important: This task is build using Node.js!
 
 ---
