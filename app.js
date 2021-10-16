@@ -11,13 +11,13 @@ app
   .route("/api/users")
   .get(userController.getAll)
   .post(userController.createOne);
-app.route("/api/users/:id").delete(userController.deleteOne);
+app.route("/api/users/:email").delete(userController.deleteOne);
 
 app
   .route("/api/rooms")
   .get(roomController.getAll)
   .post(roomController.createOne);
-app.route("/api/rooms/:id").delete(roomController.deleteOne);
+app.route("/api/rooms/:roomName").delete(roomController.deleteOne);
 
 app.route("/api/bookings").post(bookingController.makeABooking);
 app.route("/api/bookings/:roomName").get(bookingController.getBookinsForRoom);

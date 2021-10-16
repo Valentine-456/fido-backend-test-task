@@ -1,8 +1,9 @@
 const catchAsync = require("./catchAsync");
 
 class CRUDfactory {
-  constructor(Model) {
+  constructor(Model, uniqueModelField) {
     this.Model = Model;
+    this.uniqueModelField = uniqueModelField;
   }
 
   getAll() {
@@ -30,8 +31,10 @@ class CRUDfactory {
 
   deleteOne() {
     return catchAsync(async (req, res, next) => {
-      const id = req.params.id;
-      await this.Model.findByIdAndDelete(id);
+      const uniqueFieldName = this.uniqueModelField;
+      const uniqueValue = req.params[uniqueFieldName];
+
+      await this.Model.findOneAndDelete({ [uniqueFieldName]: uniqueValue });
 
       res.status(204).json({
         status: "success",
